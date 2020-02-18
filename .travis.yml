@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t mcleanmusa/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true mcleanmusa/react-test npm run test
